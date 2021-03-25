@@ -39,6 +39,22 @@
 
                     <!-- Right Side Of Navbar -->
                     <ul class="navbar-nav ml-auto">
+
+                        <li class="nav-item">
+                            <a class="nav-link" href="{{ route('cart.index') }}">Cart
+
+                            <div class="badge badge-dark">
+                                <i class="fas fa-luggage-cart"></i>
+                                @auth
+                                {{Cart::session(auth()->id())->getcontent()->count()}} 
+                
+                                    
+                                @else
+                                    0
+                                @endauth
+                            </div>
+                        </a>
+                        </li> 
                         <!-- Authentication Links -->
                         @guest
                             @if (Route::has('login'))

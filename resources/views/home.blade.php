@@ -12,6 +12,8 @@
         <div class="card-body">
             <h4 class="card-title">{{$products->name}}</h4>
             <p class="card-text">{{$products->descreption}}</p>
+            <p class="card-text">{{$products->price}}</p>
+
         </div>
         <div class="card-body">
             <a href="{{route('cart.add' , $products->id)}}" class="card-link">Add to card</a>

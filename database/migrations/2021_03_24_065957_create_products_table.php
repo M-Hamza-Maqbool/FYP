@@ -17,7 +17,7 @@ class CreateProductsTable extends Migration
             $table->bigIncrements("id");
             $table->string("name");
             $table->float("price");
-            $table->string("descreption");
+            // $table->string("descreption");
             $table->string("descreption")->nullable();
 
             $table->timestamps();
