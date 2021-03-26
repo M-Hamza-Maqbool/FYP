@@ -8,4 +8,9 @@ use Illuminate\Database\Eloquent\Model;
 class order extends Model
 {
     use HasFactory;
+
+   public function items (){
+
+    return $this->belongsToMany(Product::class,'order_items','order_id','product_id');
+   }
 }

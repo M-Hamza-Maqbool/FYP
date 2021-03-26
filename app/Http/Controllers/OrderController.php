@@ -88,19 +88,19 @@ class OrderController extends Controller
         $order->save();
         // dd($request->input('shipping_city'));
 
-        // $cartItems = \Cart::session(auth()->id())->getContent();
+        $cartItems = \Cart::session(auth()->id())->getContent();
 
-        // foreach($cartItems as $item) {
-        //     $order->items()->attach($item->id, ['price'=> $item->price, 'quantity'=> $item->quantity]);
-        // }
+        foreach($cartItems as $item) {
+            $order->items()->attach($item->id, ['price'=> $item->price, 'quantity'=> $item->quantity]);
+        }
 
         // $order->generateSubOrders();
 
-        // if (request('payment_method') == 'paypal') {
+        if (request('payment_method') == 'paypal') {
 
-        //     return redirect()->route('paypal.checkout', $order->id);
-
-        // }
+            return redirect()->route('paypal.checkout', $order->id);
+            
+        }
 
         \Cart::session(auth()->id())->clear();
 

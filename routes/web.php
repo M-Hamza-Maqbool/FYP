@@ -28,3 +28,8 @@ Route::get('/cart/checkout',[\App\Http\Controllers\CartController::class, 'check
 
 //order
 Route::post('/cart/order',[\App\Http\Controllers\OrderController::class, 'store'])->name("orders.store")->middleware('auth');
+
+Route::get('/paypal/checkout',[\App\Http\Controllers\PayPal::class, 'getExpresscheCkout'])->name("paypal.checkout");
+Route::get('/paypal/checkout_success',[\App\Http\Controllers\PayPal::class, 'getExpressCheckoutSuccess'])->name('paypal.Success');
+Route::get('/paypal/cencel_order',[\App\Http\Controllers\PayPal::class, 'cencel'])->name('paypal.cencel');
+
