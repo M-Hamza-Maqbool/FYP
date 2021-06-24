@@ -15,8 +15,8 @@ use Illuminate\Support\Facades\Route;
 |
 */
 
-Route::redirect('/', '/home');
-
+// Route::redirect('/', '/home');
+Route::view('/', 'main');
 Auth::routes();
 
 Route::get('/home', [App\Http\Controllers\HomeController::class, 'index'])->name('home');
@@ -32,4 +32,13 @@ Route::post('/cart/order',[\App\Http\Controllers\OrderController::class, 'store'
 Route::get('/paypal/checkout',[\App\Http\Controllers\PayPal::class, 'getExpresscheCkout'])->name("paypal.checkout");
 Route::get('/paypal/checkout_success',[\App\Http\Controllers\PayPal::class, 'getExpressCheckoutSuccess'])->name('paypal.Success');
 Route::get('/paypal/cencel_order',[\App\Http\Controllers\PayPal::class, 'cencel'])->name('paypal.cencel');
+
+// Route::get('shops', [\App\Http\Controllers\ShopController::class,'create'])->name('shop.create');
+// Route::post('shop_submit', [\App\Http\Controllers\ShopController::class,'store']);
+Route::resource('shop', \App\Http\Controllers\ShopController::class,)->middleware('auth');
+Route::resource('shop_mak', \App\Http\Controllers\ShopController::class,);
+
+Route::group(['prefix' => 'admin'], function () {
+    Voyager::routes();
+});
 
